@@ -11,9 +11,9 @@
 </head>
 
 <body>
-  <header>
+  <header class="sticky top-0 z-20">
     <nav>
-      <div class="navbar bg-base-100 w-full px-10 py-4">
+      <div class="navbar bg-base-300 w-full px-10 py-4 ">
         <div class="flex-1 w-2/3">
           <a class="btn btn-ghost normal-case text-xl text-primary font-sherif">Employee Manager</a>
         </div>
@@ -26,46 +26,31 @@
     </nav>
   </header>
 
-  <main class="w-5/6 mx-auto mt-20">
-    <h1 class="text-4xl mb-6">All Users</h1>
+  <main class="w-5/6 mx-auto mt-20 z-10">
+    <div class="flex justify-between">
+      <h1 class="text-4xl mb-6 ml-4">All Users</h1>
+      <a href="" class="btn btn-ghost border-2 border-gray-200">Create New User</a>
+    </div>
     <div class="overflow-x-auto">
-      <table class="table table-zebra w-full">
+      <table class="table table-zebra w-full my-4 z-0">
         <!-- head -->
         <thead>
           <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th class="font-sherif text-base">User</th>
+            <th class="font-sherif text-base">Name</th>
+            <th class="font-sherif text-base">Email</th>
+            <th class="font-sherif text-base">Point</th>
+            <th class="font-sherif text-base">Phone</th>
+            <th class="font-sherif text-base">Company</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- row 1 -->
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          <!-- row 2 -->
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <!-- row 3 -->
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
+        <tbody id="table-body">
         </tbody>
       </table>
     </div>
   </main>
-  <script type="text/javascript" src="../JS/app.js"></script>
+
+  <script src="../JS/app.js"></script>
 </body>
 
 </html>

@@ -451,3 +451,20 @@ const data = [
   }
 ];
 
+const loadDataToTable = users => {
+  const tableBody = document.getElementById("table-body");
+  users.map(user => {
+    const { id, firstName, lastName, email, point, phone, company } = user;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+    <th>${id + 1}</th>
+    <td>${firstName, lastName}</td>
+    <td>${email}</td>
+    <td>${point}</td>
+    <td>${phone}</td>
+    <td>${company}</td>`;
+
+    tableBody.appendChild(tr)
+  })
+};
+loadDataToTable(data);
