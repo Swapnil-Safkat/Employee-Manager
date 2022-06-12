@@ -484,8 +484,8 @@ const loadDataToTable = users => {
     <td>${company}</td>
     <td><button onclick="showProfile(${id})" class="btn btn-xs btn-neural font-semibold" id="profile-btn">Profile</button></td>
     <td><button onclick="editProfile(${id})" class="btn btn-xs btn-secondary font-semibold" href="">Edit</button></td>
+    <td><a class="btn btn-xs btn-accent font-semibold" href="">Delete</a></td>
     `;
-    // <td><a class="btn btn-xs btn-accent font-semibold" href="">Delete</a></td>
     tableBody.appendChild(tr)
   })
   viewManager(true, false, false, false);
