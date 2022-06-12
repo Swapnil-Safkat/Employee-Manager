@@ -450,7 +450,21 @@ const data = [
     "company": "Bruen Group"
   }
 ];
-
+const userSection = document.getElementById("user-table");
+const createUserSection = document.getElementById("user-create");
+const profileSection = document.getElementById("user-profile");
+const editSection = document.getElementById("user-edit");
+const viewManager = (users, create, profile, edit) => {
+  if (users) userSection.classList.replace("hidden", "block");
+  else userSection.classList.replace("block", "hidden");
+  if (create) createUserSection.classList.replace("hidden", "block");
+  else createUserSection.classList.replace("block", "hidden");
+  if (profile) profileSection.classList.replace("hidden", "block");
+  else profileSection.classList.replace("block", "hidden");
+  if (edit) editSection.classList.replace("hidden", "block");
+  else editSection.classList.replace("block", "hidden");
+  return;
+};
 const loadDataToTable = users => {
   const tableBody = document.getElementById("table-body");
   users.map(user => {
@@ -458,13 +472,29 @@ const loadDataToTable = users => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
     <th>${id + 1}</th>
-    <td>${firstName, lastName}</td>
+    <td>${firstName} ${lastName}</td>
     <td>${email}</td>
     <td>${point}</td>
     <td>${phone}</td>
-    <td>${company}</td>`;
-
+    <td>${company}</td>
+    <td><button onclick="()=>{showProfile(${id})}" class="btn btn-xs btn-neural font-semibold" id="profile-btn">Profile</button></td>
+    `;
+    // <td><a class="btn btn-xs btn-secondary font-semibold" href="">Edit</a></td>
+    // <td><a class="btn btn-xs btn-accent font-semibold" href="">Delete</a></td>
     tableBody.appendChild(tr)
   })
+  viewManager(true, false, false, false);
+
+  return;
 };
+const showProfile = (id)=>{
+  console.log('click');
+  viewManager(false, false, true, false);
+return ;
+};
+const createUserBtn = document.getElementById('create-user-btn');
+createUserBtn.addEventListener('click', () => {
+  viewManager(false, true, false, false);
+});
 loadDataToTable(data);
+//document.getElementById("profile-btn").addEventListener('click',()=>{showProfile()})

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.3/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Employee Manager</title>
+</head>
+
+<body>
+  <header class="sticky top-0 z-20">
+    <nav>
+      <div class="navbar bg-base-300 w-full px-10 py-4 ">
+        <div class="flex-1 w-2/3">
+          <a class="btn btn-ghost normal-case text-xl text-primary font-sherif">Employee Manager</a>
+        </div>
+        <div class="w-1/3">
+          <div class="form-control w-full">
+            <input type="text" placeholder="Aaa..." class="input input-bordered border-gray-200 rounded-lg" />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="w-11/12 mx-auto mt-20 z-10">
+    <!-- showing all data in table -->
+    <section id="user-table" class="block">
+      <div class="flex justify-between">
+        <h1 class="text-4xl mb-6 ml-4">All Users</h1>
+        <button id="create-user-btn" class="btn btn-ghost border-2 border-gray-200">Create New User</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra w-full my-4 z-0">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th class="font-sherif text-base">User</th>
+              <th class="font-sherif text-base">Name</th>
+              <th class="font-sherif text-base">Email</th>
+              <th class="font-sherif text-base">Point</th>
+              <th class="font-sherif text-base">Phone</th>
+              <th class="font-sherif text-base">Company</th>
+              <th> </th>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- create user -->
+    <section id="user-create" class="hidden">
+      <h1>Create User</h1>
+    </section>
+    <!-- show profile -->
+    <section id="user-profile" class="hidden">
+      <h1>Show profile</h1>
+    </section>
+    <!-- Edit profile -->
+    <section id="user-edit" class="hidden">
+      <h1>edit profile</h1>
+    </section>
+  </main>
+
+  <script src="./JS/app.js"></script>
+</body>
+
+</html>
