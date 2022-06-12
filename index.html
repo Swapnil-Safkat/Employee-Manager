@@ -15,11 +15,11 @@
     <nav>
       <div class="navbar bg-base-300 w-full px-10 py-4 ">
         <div class="flex-1 w-2/3">
-          <a class="btn btn-ghost normal-case text-xl text-primary font-sherif">Employee Manager</a>
+          <button id="title" class="btn btn-ghost normal-case text-xl text-primary font-sherif">Employee Manager</button>
         </div>
         <div class="w-1/3">
           <div class="form-control w-full">
-            <input type="text" placeholder="Aaa..." class="input input-bordered border-gray-200 rounded-lg" />
+            <input id="search-box" type="text" placeholder="Aaa..." class="input input-bordered border-gray-200 rounded-lg" />
           </div>
         </div>
       </div>
@@ -30,15 +30,15 @@
     <!-- showing all data in table -->
     <section id="user-table" class="block">
       <div class="flex justify-between">
-        <h1 class="text-4xl mb-6 ml-4">All Users</h1>
+        <h1 id="all-users-title" class="text-4xl mb-6 ml-4">All Users</h1>
         <button id="create-user-btn" class="btn btn-ghost border-2 border-gray-200">Create New User</button>
       </div>
-      <div class="overflow-x-auto">
+      <div id="table-container" class="overflow-x-auto">
         <table class="table table-zebra w-full my-4 z-0">
           <!-- head -->
           <thead>
             <tr>
-              <th class="font-sherif text-base">User</th>
+              <th class="font-sherif text-base">Id</th>
               <th class="font-sherif text-base">Name</th>
               <th class="font-sherif text-base">Email</th>
               <th class="font-sherif text-base">Point</th>
@@ -60,7 +60,26 @@
     </section>
     <!-- show profile -->
     <section id="user-profile" class="hidden">
-      <h1>Show profile</h1>
+      <div class="hero bg-base-600">
+        <div class="hero-content flex-col lg:flex-row">
+          <div class="avatar mr-10">
+            <div class="w-80 mask mask-squircle">
+              <img src="https://api.lorem.space/image/face?hash=47449" />
+            </div>
+          </div>
+          <div>
+            <h1 id="profile-name" class="text-3xl font-bold"></h1>
+            <h1 id="profile-email" class="text-base my-2 "></h1>
+            <h1 id="profile-phone" class="text-base my-2 "></h1>
+            <h1 id="profile-company" class="text-base my-2"></h1>
+            <h1 id="profile-point" class="text-lg my-2"></h1>
+            <div class="mt-8">
+              <button id="profile-edit" class="btn btn-primary mr-3">Edit Profile</button>
+              <button class="btn btn-accent">Remove User</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <!-- Edit profile -->
     <section id="user-edit" class="hidden">

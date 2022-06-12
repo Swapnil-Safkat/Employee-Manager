@@ -466,7 +466,12 @@ const viewManager = (users, create, profile, edit) => {
   return;
 };
 const loadDataToTable = users => {
+    if (users.length <= 0) {
+    document.getElementById("table-container").innerHTML = `<h1 class='text-lg ml-4'>No data found</h1>`;
+    return;
+  }
   const tableBody = document.getElementById("table-body");
+  tableBody.innerHTML=''
   users.map(user => {
     const { id, firstName, lastName, email, point, phone, company } = user;
     const tr = document.createElement('tr');
@@ -477,24 +482,51 @@ const loadDataToTable = users => {
     <td>${point}</td>
     <td>${phone}</td>
     <td>${company}</td>
-    <td><button onclick="()=>{showProfile(${id})}" class="btn btn-xs btn-neural font-semibold" id="profile-btn">Profile</button></td>
+    <td><button onclick="showProfile(${id})" class="btn btn-xs btn-neural font-semibold" id="profile-btn">Profile</button></td>
+    <td><button onclick="editProfile(${id})" class="btn btn-xs btn-secondary font-semibold" href="">Edit</button></td>
     `;
-    // <td><a class="btn btn-xs btn-secondary font-semibold" href="">Edit</a></td>
     // <td><a class="btn btn-xs btn-accent font-semibold" href="">Delete</a></td>
     tableBody.appendChild(tr)
   })
   viewManager(true, false, false, false);
-
   return;
 };
-const showProfile = (id)=>{
-  console.log('click');
+
+//search user
+document.getElementById('title').addEventListener('click', () => { loadDataToTable(data) })
+document.querySelector('#search-box').addEventListener('change', (event) => {
+  const searchBy = event.target.value;
+  if (searchBy === '') {
+    console.log('here');
+    document.getElementById('all-users-title').innerText = `All Users`
+    loadDataToTable(data);
+    return;
+  }
+  document.getElementById('all-users-title').innerText = `Searched by '${searchBy}'`
+  console.log(searchBy);
+  loadDataToTable(data.filter(user => (user.firstName.includes(searchBy) || user.lastName.includes(searchBy))));
+  return;
+});
+
+//show user profile
+const showProfile = (id) => {
   viewManager(false, false, true, false);
-return ;
+  document.getElementById('profile-name').innerText = `${data[id].firstName} ${data[id].lastName}`;
+  document.getElementById('profile-email').innerText = `${data[id].email}`;
+  document.getElementById('profile-phone').innerText = `${data[id].phone}`;
+  document.getElementById('profile-company').innerText = `Works at ${data[id].company}`;
+  document.getElementById('profile-point').innerText = `User point: ${data[id].point}`;
+  document.getElementById('profile-edit').addEventListener('click', () => { editProfile(id) }
+  )
+  return;
+};
+const editProfile = (id) => {
+  console.log(id);
+  viewManager(false, false, false, true);
+  return;
 };
 const createUserBtn = document.getElementById('create-user-btn');
 createUserBtn.addEventListener('click', () => {
   viewManager(false, true, false, false);
 });
 loadDataToTable(data);
-//document.getElementById("profile-btn").addEventListener('click',()=>{showProfile()})
