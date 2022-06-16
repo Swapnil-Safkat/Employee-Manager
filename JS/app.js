@@ -1,4 +1,4 @@
-const data = JSON.parse(localStorage.getItem('users'));
+let data = JSON.parse(localStorage.getItem('users'));
 const userSection = document.getElementById("user-table");
 const createUserSection = document.getElementById("user-create");
 const profileSection = document.getElementById("user-profile");
@@ -25,7 +25,7 @@ const loadDataToTable = users => {
     return;
   }
   const tableBody = document.getElementById("table-body");
-  tableBody.innerHTML=''
+  tableBody.innerHTML = ''
   users.map(user => {
     const { id, firstName, lastName, email, point, phone, company } = user;
     const tr = document.createElement('tr');
@@ -70,18 +70,75 @@ const showProfile = (id) => {
   document.getElementById('profile-phone').innerText = `${data[id].phone}`;
   document.getElementById('profile-company').innerText = `Works at ${data[id].company}`;
   document.getElementById('profile-point').innerText = `User point: ${data[id].point}`;
-  document.getElementById('profile-edit').addEventListener('click', () => { editProfile(id) }
-  )
+  document.getElementById('profile-edit').addEventListener('click', () => { editProfile(id) })
+  document.getElementById('profile-delete').addEventListener('click', () => { deleteProfile(id) })
+  return;
+};
+//Edit Profile
+const editProfile = (id) => {
+  viewManager(false, false, false, true);
+  const { firstName, lastName, email, point, phone, company } = data[id];
+  const FN = document.getElementById('edit-first-name');
+  const LN = document.getElementById('edit-last-name');
+  const EM = document.getElementById('edit-email');
+  const PON = document.getElementById('edit-point');
+  const PHO = document.getElementById('edit-phone');
+  const COM = document.getElementById('edit-company');
+  FN.value = firstName;
+  LN.value = lastName;
+  EM.value = email;
+  PON.value = point;
+  PHO.value = phone;
+  COM.value = company;
+  document.getElementById('add-changes').addEventListener('click', () => {
+    const editedUser = {
+      id,
+      firstName : FN.value,
+      lastName : LN.value,
+      email: EM.value,
+      point: PON.value,
+      phone: PHO.value,
+      company: COM.value,
+    };
+    data[id] = editedUser;
+    localStorage.setItem('users', data);
+    viewManager(true, false, false, false);
+    console.log(data[id]);
+  });
+  return;
+};
+//delete profile
+const deleteProfile = (id) => {
+  viewManager(true, false, false, false);
+  console.log(data.splice(id, 1));
+  let newId = 0;
+  data.map(d => {
+    d["id"] = newId;
+    newId++;
+  })
+  localStorage.setItem('users', JSON.stringify(data));
+  loadDataToTable(data);
   return;
 };
 
-const editProfile = (id) => {
-  console.log(id);
-  viewManager(false, false, false, true);
-  return;
-};
-const createUserBtn = document.getElementById('create-user-btn');
-createUserBtn.addEventListener('click', () => {
+//load create user page
+document.getElementById('create-user-btn').addEventListener('click', () => {
   viewManager(false, true, false, false);
 });
+
+//create a new user
+document.getElementById('create-user').addEventListener('click', () => {
+  const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
+  const email = document.getElementById('email').value;
+  const point = document.getElementById('point').value;
+  const phone = document.getElementById('phone').value;
+  const company = document.getElementById('company').value;
+  const id = data.length;
+  const newUser = { id, firstName, lastName, email, point, phone, company };
+  data.push(newUser);
+  localStorage.setItem('users', JSON.stringify(data));
+  loadDataToTable(data);
+});
+
 loadDataToTable(data);
