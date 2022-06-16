@@ -35,7 +35,8 @@
         <h1 id="all-users-title" class="text-4xl mb-6 ml-4">All Users</h1>
         <button id="create-user-btn" class="btn btn-ghost border-2 border-gray-200">Create New User</button>
       </div>
-      <div id="table-container" class="overflow-x-auto">
+      <div class="overflow-x-auto">
+        <h1 id="no-data" class='text-lg ml-4 text-red-400'></h1>
         <table class="table table-zebra w-full my-4 z-0">
           <!-- head -->
           <thead>
@@ -57,31 +58,31 @@
       </div>
     </section>
     <!-- create user -->
-    <section id="user-create" class="hidden">
-      <h1 class="text-3xl ml-2 mb-6">Create New User</h1>
-      <div class="form-control">
+    <section id="user-create" class="hidden w-full sm:w-1/2 md:w-1/3 mx-auto px-6 py-10 bg-base-300 rounded-2xl shadow-lg shadow-gray-800 border-2 border-gray-800">
+      <h1 class="text-3xl ml-2 mb-6 text-center">Create New User</h1>
+      <div class="form-control w-full">
         <label class="input-group my-2">
-          <span class="w-32">First Name</span>
-          <input type="text" placeholder="Aa.." class="input input-bordered" />
+          <span class="w-1/3">First Name</span>
+          <input type="text" placeholder="Aa.." class="input input-bordered w-full" />
         </label>
         <label class="input-group my-2">
-          <span class="w-32">Last Name</span>
-          <input type="text" placeholder="Aa.." class="input input-bordered" />
+          <span class="w-1/3">Last Name</span>
+          <input type="text" placeholder="Aa.." class="input input-bordered w-full" />
         </label>
         <label class="input-group my-2">
-          <span class="w-32">Email</span>
-          <input type="text" placeholder="info@site.com" class="input input-bordered" />
+          <span class="w-1/3">Email</span>
+          <input type="text" placeholder="info@site.com" class="input input-bordered w-full" />
         </label>
         <label class="input-group my-2">
-          <span class="w-32">Phone</span>
-          <input type="text" placeholder="01xxxxxx" class="input input-bordered" />
+          <span class="w-1/3">Phone</span>
+          <input type="text" placeholder="01xxxxxx" class="input input-bordered w-full" />
         </label>
         <label class="input-group my-2">
-          <span class="w-32">Company</span>
-          <input type="text" placeholder="ford inc" class="input input-bordered" />
+          <span class="w-1/3">Company</span>
+          <input type="text" placeholder="ford inc" class="input input-bordered w-full" />
         </label>
       </div>
-      <button class="btn btn-primary mt-4 px-10">Add</button>
+      <button class="btn btn-primary mt-4 px-10 w-full">Add</button>
     </section>
     <!-- show profile -->
     <section id="user-profile" class="hidden">
@@ -112,6 +113,7 @@
     </section>
   </main>
 
+  <script src="./JS/users.js"></script>
   <script src="./JS/app.js"></script>
 </body>
 
